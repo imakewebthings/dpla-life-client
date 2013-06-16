@@ -40,12 +40,6 @@
   font-size:11px;
   text-transform:capitalize;
   font-weight:700;
-
-  &.active {
-    background:$relatedCategoryBackground;
-    pointer-events:none;
-    cursor:default;
-  }
 }
 
 .single-subject {
@@ -72,8 +66,17 @@
   }
 }
 
+.single-subject-link, .subject-union, .subject-intersection {
+  &.active {
+    background:$relatedCategoryBackground;
+    pointer-events:none;
+    cursor:default;
+  }
+}
+
 .dpla-search {
-  font-family:'FontAwesome'
+  font-family:'FontAwesome';
+  font-size:11px;
 }
 
 .subject-divider {

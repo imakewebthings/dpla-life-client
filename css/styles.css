@@ -373,10 +373,6 @@ a, .button {
   font-size: 11px;
   text-transform: capitalize;
   font-weight: 700; }
-  .subject-button.active {
-    background: #ff6600;
-    pointer-events: none;
-    cursor: default; }
 
 .single-subject {
   display: inline-block;
@@ -395,8 +391,14 @@ a, .button {
       color: white;
       border-color: #007acc; }
 
+.single-subject-link.active, .subject-union.active, .subject-intersection.active {
+  background: #ff6600;
+  pointer-events: none;
+  cursor: default; }
+
 .dpla-search {
-  font-family: "FontAwesome"; }
+  font-family: 'FontAwesome';
+  font-size: 11px; }
 
 .subject-divider {
   font-weight: 100;

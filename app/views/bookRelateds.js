@@ -21,11 +21,11 @@ define([
     template: _.template(BookRelatedsTemplate),
 
     events: {
-      'click .single-subject': 'loadSingleSubject',
+      'click .single-subject-link': 'loadSingleSubject',
       'click .subject-union': 'loadSubjectUnion',
       'click .subject-intersection': 'loadSubjectIntersection',
       'click .neighbors.enabled': 'loadNeighbors',
-      'click .related-category a[data-subject]': 'setActiveButton'
+      'click .subject-button': 'setActiveButton'
     },
 
     initialize: function(options) {
@@ -35,7 +35,7 @@ define([
 
     render: function() {
       BaseView.prototype.render.call(this);
-      this.$('.related-stacks-nav .qtip-me').qtip();
+      this.$('.qtip-me').qtip();
     },
 
     loadNeighborData: function() {
@@ -45,11 +45,11 @@ define([
           this.$('.neighbors').removeClass('disabled').addClass('enabled');  
         }
         else {
-          this.$('.neighbors').closest('.related-category').remove();
+          this.$('.neighbors').remove();
         }
 
         if (!$('.stackview').length) {
-          this.$('.related-category a[data-subject]').first().click();
+          this.$('.single-subject-link').first().click();
         }
       }, this);
 
@@ -65,6 +65,7 @@ define([
         data: this._neighborData,
         ribbon: 'User Shelves'
       });
+      event.preventDefault();
     },
 
     loadSingleSubject: function(event) {
@@ -77,6 +78,8 @@ define([
         ribbon: subject,
         fullHeight: true
       });
+
+      event.preventDefault();
     },
 
     loadSubjectUnion: function(event) {
@@ -86,6 +89,7 @@ define([
         query: this.model.get('source_id'),
         ribbon: 'Expanded'
       });
+      event.preventDefault();
     },
 
     loadSubjectIntersection: function(event) {
@@ -95,6 +99,7 @@ define([
         query: this.model.get('source_id'),
         ribbon: 'Focused'
       });
+      event.preventDefault();
     },
 
     loadStack: function(options) {
@@ -102,9 +107,8 @@ define([
     },
 
     setActiveButton: function(event) {
-      this.$('.related-category a').removeClass('active');
+      this.$('.subject-button').removeClass('active');
       $(event.target).addClass('active');
-      event.preventDefault();
     },
 
     loadPreview: function(event) {
