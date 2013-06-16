@@ -25,7 +25,7 @@ define([
       'click .subject-union': 'loadSubjectUnion',
       'click .subject-intersection': 'loadSubjectIntersection',
       'click .neighbors.enabled': 'loadNeighbors',
-      'click .related-category a': 'setActiveButton'
+      'click .related-category a[data-subject]': 'setActiveButton'
     },
 
     initialize: function(options) {
@@ -35,7 +35,7 @@ define([
 
     render: function() {
       BaseView.prototype.render.call(this);
-      this.$('.related-category .button').qtip();
+      this.$('.related-stacks-nav .qtip-me').qtip();
     },
 
     loadNeighborData: function() {
@@ -49,7 +49,7 @@ define([
         }
 
         if (!$('.stackview').length) {
-          this.$('.button').first().click();
+          this.$('.related-category a[data-subject]').first().click();
         }
       }, this);
 

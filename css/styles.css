@@ -352,21 +352,51 @@ a, .button {
   font-size: 24px;
   font-weight: 100; }
 
+.related-stacks-header {
+  position: relative; }
+  .related-stacks-header ul {
+    position: absolute;
+    right: 0;
+    top: 12px;
+    list-style: none; }
+  .related-stacks-header li {
+    float: left;
+    margin-left: 5px; }
+
 .related-category {
   margin: 8px 0; }
-  .related-category ul {
-    display: inline; }
   .related-category li {
     display: inline-block;
     margin-bottom: 5px; }
-  .related-category a {
-    font-size: 11px;
-    text-transform: capitalize;
-    font-weight: 700; }
-    .related-category a.active {
-      background: #ff6600;
-      pointer-events: none;
-      cursor: default; }
+
+.subject-button {
+  font-size: 11px;
+  text-transform: capitalize;
+  font-weight: 700; }
+  .subject-button.active {
+    background: #ff6600;
+    pointer-events: none;
+    cursor: default; }
+
+.single-subject {
+  display: inline-block;
+  background: rgba(0, 122, 204, 0.7);
+  border: 1px solid rgba(0, 122, 204, 0.3);
+  border-radius: 3px; }
+  .single-subject a {
+    text-decoration: none;
+    float: left;
+    padding: 5px;
+    color: white; }
+    .single-subject a:first-child {
+      border-right: 1px solid #007acc; }
+    .single-subject a:hover, .single-subject a:focus {
+      background: #007acc;
+      color: white;
+      border-color: #007acc; }
+
+.dpla-search {
+  font-family: "FontAwesome"; }
 
 .subject-divider {
   font-weight: 100;

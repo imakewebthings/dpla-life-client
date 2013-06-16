@@ -1,18 +1,27 @@
 <div class="related-stacks-nav">
-  <h2>Subjects</h2>
-
   <% var subjects = model.get('subjects') %>
+
+  <div class="related-stacks-header">
+    <h2>Subjects</h2>
+    <% if (subjects.length > 1) { %>
+      <ul>
+        <li><a href="#" class="subject-union button qtip-me subject-button" title="Books that share at least one subject with this book">Expand</a></li>
+        <li><a href="#" class="subject-intersection button qtip-me subject-button" title="Books that share every subject with this book">Focus</a></li>
+      </ul>
+    <% } %>
+  </div>
+  
   <% if (subjects && subjects.length) { %>
     <div class="related-category">
       <ul>
         <% _.each(subjects, function(subject, index) { %>
-          <li><a href="#" class="button single-subject" data-subject="<%= subject %>"><%= subject %></a></li>
+          <li>
+            <span class="single-subject subject-button">
+              <a href="#" data-subject="<%= subject %>"><%= subject %></a>
+              <a href="http://dp.la/search?utf8=✓&q=<%= encodeURIComponent(subject) %>" target="_blank" class="qtip-me dpla-search" title="Search the DPLA for <%= subject %>">&#xf002;</a>
+            </span>
+          </li>
         <% }); %>
-        <% if (subjects.length > 1) { %>
-          <li class="subject-divider">|</li>
-          <li><a href="#" class="subject-union button" title="Books that share at least one subject with this book">Expand</a></li>
-          <li><a href="#" class="subject-intersection button" title="Books that share every subject with this book">Focus</a></li>
-        <% } %>
       </ul>
     </div>
   <% } %>
