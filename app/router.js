@@ -141,6 +141,11 @@ define([
 
   appRouter = new Router();
 
+  // Google Analytics for all the routes
+  Backbone.history.on('route', function() {
+    window.ga('send', 'pageview', '/' + Backbone.history.fragment);
+  });
+
   // Let other modules trigger navigation changes without creating circular
   // dependencies, using the mediator object to pass events.
   mediator.on({
