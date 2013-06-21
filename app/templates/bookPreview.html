@@ -52,7 +52,7 @@
     <% } %>
   </div>
 
-  <% if (currentUser && currentUser.get('shelves').length) { %>
+  <% if (currentUser && currentUser.get('shelves') && currentUser.get('shelves').length) { %>
     <form action="#" method="post" class="add-to-shelf-form">
       <label for="push_shelf_id">Add to Shelf</label>
       <select name="shelf_id" id="push_shelf_id">

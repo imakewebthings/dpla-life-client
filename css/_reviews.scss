@@ -1,7 +1,6 @@
 .reviews-list {
   padding-top:16px;
-  margin:0 0 16px 0;
-  border-top:1px solid $reviewsListBorder;
+  margin:16px 0;
   position:relative;
 
   h2 {
@@ -20,6 +19,7 @@
   padding:10px;
   margin-bottom:16px;
   background:$reviewBackground;
+  clear:both;
 
   h3 {
     font-size:18px;
@@ -54,10 +54,18 @@
 }
 
 .average-rating {
-  position:absolute;
-  top:30px;
-  right:10px;
+  &:before {
+    content:'Avg:';
+    font-family:'Roboto', sans-serif;
+    padding-right:5px;
+    font-size:12px;
+    vertical-align:middle;
+  }
+
+  float:right;
   opacity:0.5;
+  position:relative;
+  right:10px;
 }
 
 .review-comment {

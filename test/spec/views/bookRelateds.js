@@ -10,14 +10,14 @@ define([
 
     beforeEach(function() {
       setFixtures('<div class="target" />');
-      relateds = new BookReaderView({
+      relateds = new BookRelatedsView({
         el: '.target',
         model: book
       });
     });
 
     it('renders the related template', function() {
-      expect(relateds.$('.related-stacks')).toExist();
+      expect(relateds.$('.book-relateds-nav')).toExist();
     });
   });
 });

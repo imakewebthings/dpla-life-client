@@ -1,0 +1,24 @@
+<div class="book-subjects">
+  <% var subjects = model.get('subjects') %>
+
+  <% if (subjects && subjects.length > 1) { %>
+    <ul class="meta-subjects">
+      <li><a href="#" class="neighbors button qtip-me disabled" title="Books that appear on user shelves alongside this book">User Shelves</a></li>
+      <li><a href="#" class="subject-union button qtip-me subject-button" title="Books that share at least one subject with this book">Expand</a></li>
+      <li><a href="#" class="subject-intersection button qtip-me subject-button" title="Books that share every subject with this book">Focus</a></li>
+    </ul>
+  <% } %>
+
+  <% if (subjects && subjects.length) { %>
+    <ul class="individual-subjects">
+      <% _.each(subjects, function(subject, index) { %>
+        <li>
+          <span class="single-subject">
+            <a href="#" class="single-subject-link subject-button" data-subject="<%= subject %>"><%= subject %></a>
+            <a href="http://dp.la/search?utf8=✓&q=<%= encodeURIComponent(subject) %>" target="_blank" class="qtip-me dpla-search" title="Search the DPLA for <%= subject %>">&#xf002;</a>
+          </span>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+</div>

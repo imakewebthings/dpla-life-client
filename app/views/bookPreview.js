@@ -37,22 +37,10 @@ define([
 
     initialize: function(options) {
       BaseView.prototype.initialize.call(this, options);
-      var reviews = new ReviewCollection();
-      var self = this;
+    },
 
-      reviews.bookID = this.model.get('source_id');
-      reviews.fetch({
-        success: function(collection, response, options) {
-          self.subviews.push(new ReviewsView({ collection: collection }));
-        },
-        error: function(collection, xhr, options) {
-          appNotify.notify({
-            type: 'error',
-            message: 'Something went wrong trying to load reviews.'
-          });
-        }
-      });
-
+    render: function() {
+      BaseView.prototype.render.call(this);
       this.subviews.push(new BookRelatedsView({
         el: '.book-relateds',
         model: this.model

@@ -1,0 +1,68 @@
+.individual-subjects {
+  margin:8px 0;
+
+  li {
+    display:inline-block;
+    margin-bottom:5px;
+  }
+}
+
+.meta-subjects {
+  width:100%;
+  overflow:hidden;
+
+  li {
+    float:left;
+    margin-right:4px
+  }
+}
+
+.subject-button {
+  font-size:11px;
+  text-transform:capitalize;
+  font-weight:700;
+}
+
+.single-subject {
+  display:inline-block;
+  background:$buttonDefaultBackground;
+  border:1px solid $buttonDefaultBorder;
+  border-radius:3px;
+
+  a {
+    text-decoration:none;
+    float:left;
+    padding:5px;
+    color:$buttonDefaultColor;
+
+    &:first-child {
+      border-right:1px solid $buttonDefaultHoverBackground;
+    }
+
+    &:hover, &:focus {
+      background:$buttonDefaultHoverBackground;
+      color:$buttonDefaultHoverColor;
+      border-color:$buttonDefaultHoverBorder;
+    }
+  }
+}
+
+.single-subject-link, .subject-union, .subject-intersection {
+  &.active {
+    background:$relatedCategoryBackground;
+    pointer-events:none;
+    cursor:default;
+  }
+}
+
+.dpla-search {
+  font-family:'FontAwesome';
+  font-size:11px;
+}
+
+.neighbors.disabled {
+  pointer-events:none;
+  cursor:default;
+  background:#aaa;
+  border-color:#999;
+}

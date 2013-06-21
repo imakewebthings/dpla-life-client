@@ -10,7 +10,10 @@ define([
 
     beforeEach(function() {
       setFixtures('<div class="book-reviews" />');
-      reviewsView = new ReviewsView({ collection: reviewList });
+      reviewsView = new ReviewsView({
+        el: '.book-reviews',
+        collection: reviewList
+      });
     });
 
     it('renders the reviews template', function() {

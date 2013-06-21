@@ -1,93 +1,56 @@
 .book-relateds {
   margin-top:16px;
-  border-top:1px solid $reviewsListBorder;
 }
 
-.related-stacks-nav {
-  h2 {
-    padding-top:8px;
-    font-size:24px;
-    font-weight:100;
-  }
-}
+.book-relateds-nav {
+  @extend .clearfix;
+  width:338px;
+  border:1px solid $relatedNavBorder;
+  border-radius:5px;
 
-.related-stacks-header {
-  position:relative;
-
-  ul {
-    position:absolute;
-    right:0;
-    top:12px;
-    list-style:none;
-  }
-
-  li {
+  > li {
+    width:112px;
     float:left;
-    margin-left:5px;
-  }
-}
-
-.related-category {
-  margin:8px 0;
-
-  li {
-    display:inline-block;
-    margin-bottom:5px;
-  }
-}
-
-.subject-button {
-  font-size:11px;
-  text-transform:capitalize;
-  font-weight:700;
-}
-
-.single-subject {
-  display:inline-block;
-  background:$buttonDefaultBackground;
-  border:1px solid $buttonDefaultBorder;
-  border-radius:3px;
-
-  a {
-    text-decoration:none;
-    float:left;
-    padding:5px;
-    color:$buttonDefaultColor;
+    border-left:1px solid $relatedNavBorder;
 
     &:first-child {
-      border-right:1px solid $buttonDefaultHoverBackground;
+      border-left:0;
+    }
+  }
+
+  a {
+    display:block;
+    padding:3px;
+    text-align:center;
+    background:$relatedNavBackground;
+    color:$baseWhite;
+    font-weight:700;
+    text-decoration:none;
+    position:relative;
+
+    &:hover, &:focus, &.active {
+      background:$relatedNavBackgroundHover;
     }
 
-    &:hover, &:focus {
-      background:$buttonDefaultHoverBackground;
-      color:$buttonDefaultHoverColor;
-      border-color:$buttonDefaultHoverBorder;
+    &.active {
+      pointer-events:none;
+      cursor:default;
+
+      &:after {
+        content:'';
+        position:absolute;
+        bottom:-11px;
+        left:50%;
+        margin-left:-5px;
+        width:0;
+        height:0;
+        border:5px solid transparent;
+        border-top-color:$relatedNavBorder;
+      }
     }
   }
 }
 
-.single-subject-link, .subject-union, .subject-intersection {
-  &.active {
-    background:$relatedCategoryBackground;
-    pointer-events:none;
-    cursor:default;
-  }
-}
-
-.dpla-search {
-  font-family:'FontAwesome';
-  font-size:11px;
-}
-
-.subject-divider {
-  font-weight:100;
-  padding:0 5px;
-  color:$subjectDividerColor;
-}
-
-.neighbors.disabled {
-  pointer-events:none;
-  cursor:default;
-  background:#aaa;
-  border-color:#999;
+.book-relateds-container {
+  margin-top:16px;
 }

@@ -26,7 +26,6 @@ define([
   ) {
 
   var ReviewsView = BaseView.extend({
-    el: '.book-reviews',
     template: _.template(ReviewsTemplate),
 
     events: {

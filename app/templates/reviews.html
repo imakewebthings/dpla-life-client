@@ -1,48 +1,56 @@
 <% var currentUser = helpers.currentUser(); %>
 
-<div class="reviews-list">
-  <h2 data-reviewcount="<%= collection.length %>">Reviews</h2>
-  <div class="star-rating average-rating" title="Average Rating">
-    <% var averageRating = helpers.averageRating() %>
-    <% if (averageRating) { %>
-      <% var fullStars = Math.floor(averageRating) %>
-      <% var halfStar = averageRating !== fullStars %>
-      <% var emptyStars = 5 - Math.ceil(averageRating) %>
+<% if (collection.length) { %>
+  <div class="reviews-list">
+    <div class="star-rating average-rating" title="Average Rating">
+      <% var averageRating = helpers.averageRating() %>
+      <% if (averageRating) { %>
+        <% var fullStars = Math.floor(averageRating) %>
+        <% var halfStar = averageRating !== fullStars %>
+        <% var emptyStars = 5 - Math.ceil(averageRating) %>
 
-      <% _.times(fullStars, function() { %>
-        <span class="star">&#xf005;</span>
-      <% }); %>
-      <% if (halfStar) { %> <span class="star">&#xf089;</span> <% } %>
-      <% _.times(emptyStars, function() { %>
-        <span class="star">&#xf006;</span>
-      <% }); %>
-    <% } %>
-  </div>
-  <% collection.each(function(review) { %>
-    <div class="review" data-reviewid="<%= review.id %>">
-      <% if (review.get('rating')) { %>
-        <div class="star-rating">
-          <% _.times(review.get('rating'), function() { %>
-            <span class="star">&#xf005;</span>
-          <% }); %>
-          <% _.times(5 - review.get('rating'), function() { %>
-            <span class="star">&#xf006;</span>
-          <% }); %>
-        </div>
-      <% } %>
-
-      <% if (currentUser && review.get('user').id === currentUser.get('id')) { %>
-        <a href="#" class="delete-review" title="Delete Review">&#xf056;</a>
-      <% } %>
-
-      <h3><%= review.get('user').display_name %></h3>
-
-      <% if (review.get('comment')) { %>
-        <div class="review-comment"><%= review.get('comment') %></div>
+        <% _.times(fullStars, function() { %>
+          <span class="star">&#xf005;</span>
+        <% }); %>
+        <% if (halfStar) { %> <span class="star">&#xf089;</span> <% } %>
+        <% _.times(emptyStars, function() { %>
+          <span class="star">&#xf006;</span>
+        <% }); %>
       <% } %>
     </div>
-  <% }); %>
-</div>
+    <% collection.each(function(review) { %>
+      <div class="review" data-reviewid="<%= review.id %>">
+        <% if (review.get('rating')) { %>
+          <div class="star-rating">
+            <% _.times(review.get('rating'), function() { %>
+              <span class="star">&#xf005;</span>
+            <% }); %>
+            <% _.times(5 - review.get('rating'), function() { %>
+              <span class="star">&#xf006;</span>
+            <% }); %>
+          </div>
+        <% } %>
+
+        <% if (currentUser && review.get('user').id === currentUser.get('id')) { %>
+          <a href="#" class="delete-review" title="Delete Review">&#xf056;</a>
+        <% } %>
+
+        <h3><%= review.get('user').display_name %></h3>
+
+        <% if (review.get('comment')) { %>
+          <div class="review-comment"><%= review.get('comment') %></div>
+        <% } %>
+      </div>
+    <% }); %>
+  </div>
+<% } else { %>
+  <p class="no-reviews-message">
+    This book has no reviews.
+    <% if (!currentUser) { %>
+      Log in to leave one.
+    <% } %>
+  </p>
+<% } %>
 
 <% if (currentUser && !helpers.userHasReview()) { %>
   <div class="new-review">
