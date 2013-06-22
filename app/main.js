@@ -8,6 +8,7 @@ require.config({
     'jquery.cookie': 'libs/jquery/jquery.cookie',
     'jquery.infieldlabel': 'libs/jquery/jquery.infieldlabel',
     'jquery.qtip': 'libs/jquery/jquery.qtip.min',
+    'jquery.masonry': 'libs/jquery/jquery.masonry.min',
     modernizr: 'libs/modernizr/modernizr',
     JSON: 'libs/json2/json2',
     stackview: 'libs/stackview/stackview',
@@ -38,6 +39,14 @@ require.config({
     },
 
     'jquery.infieldlabel': {
+      deps: ['jquery']
+    },
+
+    'jquery.masonry': {
+      deps: ['jquery']
+    },
+
+    'jquery.qtip': {
       deps: ['jquery']
     },
 

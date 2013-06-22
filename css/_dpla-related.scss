@@ -1,14 +1,28 @@
+.dpla-loading {
+  &:before {
+    content: 'Loading…'
+  }
+}
+
 .dpla-related {
   width:360px;
   margin-left:-5px;
+
+  .dpla-loading & {
+    visibility:hidden;
+  }
 }
 
 .view-dpla-item {
   float:left;
   text-decoration:none;
   margin:0 0 5px 5px;
+  width:110px;
 
   img {
     display:block;
+    width:100%;
+    height:auto;
   }
 }
+

@@ -50,7 +50,7 @@ define([
     loadDplaItems: function() {
       if (!this.dplaView) {
         this.dplaView = new DplaRelatedView({
-          model: this.model
+          bookModel: this.model
         });
         this.subviews.push(this.dplaView);
       }

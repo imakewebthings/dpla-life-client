@@ -36,6 +36,12 @@ define(['underscore'], function(_) {
     bookReviewsURL: function(bookID) {
       return [settings.bookURL(), bookID, 'reviews'].join('/');
     },
+    dplaItemURL: function(itemID) {
+      return [settings.apiRoot, 'dpla-items', itemID].join('/');
+    },
+    dplaSearchURL: function(params) {
+      return settings.apiRoot + '/dpla-items?' + $.param(params);
+    },
     indexStackURL: function() {
       return settings.apiRoot + '/search';
     },

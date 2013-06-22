@@ -1,7 +1,13 @@
+<% var items = model.get('docs') %>
+
 <div class="dpla-related">
-  <% _.times(18, function(n) { %>
-    <a href="#" class="view-dpla-item">
-      <img src="http://placehold.it/110x80">
-    </a>
-  <% }); %>
+  <% if (items && items.length) { %>
+    <% _.each(items, function(item) { %>
+      <a href="<%= item.isShownAt %>" target="_blank" class="qtip-me view-dpla-item" title="<%= item.sourceResource.title %>">
+        <img src="<%= item.object %>" alt="<%= item.sourceResource.title %>">
+      </a>
+    <% }); %>
+  <% } else { %>
+    <p>No related DPLA images.</p>
+  <% } %>
 </div>
