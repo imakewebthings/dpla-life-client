@@ -46,7 +46,7 @@ define([
       this.$('.qtip-me').qtip();
       this.$('.dpla-related').imagesLoaded(_.bind(function() {
         this.$('.dpla-related').masonry({
-          itemSelector: 'a'
+          itemSelector: '.dpla-related-item'
         });
         this.$el.removeClass('dpla-loading');
       }, this));

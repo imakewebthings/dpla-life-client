@@ -450,15 +450,38 @@ a, .button {
   .dpla-loading .dpla-related {
     visibility: hidden; }
 
-.view-dpla-item {
+.dpla-related-item {
   float: left;
-  text-decoration: none;
   margin: 0 0 5px 5px;
-  width: 110px; }
+  width: 110px;
+  position: relative; }
+  .dpla-related-item a {
+    text-decoration: none; }
+
+.view-dpla-item {
+  display: block; }
   .view-dpla-item img {
     display: block;
     width: 100%;
     height: auto; }
+
+.view-source-item {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.7);
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  opacity: 0;
+  font-family: 'FontAwesome';
+  text-align: center;
+  font-size: 12px;
+  color: white; }
+
+.no-touch .dpla-related-item:hover .view-source-item {
+  opacity: 1; }
 
 .dropdown {
   position: relative; }
