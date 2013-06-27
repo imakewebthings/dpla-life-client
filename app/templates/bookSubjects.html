@@ -15,7 +15,12 @@
         <li>
           <span class="single-subject">
             <a href="#" class="single-subject-link subject-button" data-subject="<%= subject %>"><%= subject %></a>
-            <a href="http://dp.la/search?utf8=✓&q=<%= encodeURIComponent(subject) %>" target="_blank" class="qtip-me dpla-search" title="Search the DPLA for <%= subject %>">&#xf002;</a>
+            <a href="http://dp.la/search?utf8=✓&q=<%= encodeURIComponent(subject) %>" target="_blank" class="qtip-me dpla-search" title="Search the DPLA for <%= subject %>">
+              <span class="d">D</span>
+              <span class="p">P</span>
+              <span class="l">L</span>
+              <span class="a">A</span>
+            </a>
           </span>
         </li>
       <% }); %>

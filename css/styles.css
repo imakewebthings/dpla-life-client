@@ -389,7 +389,7 @@ a, .button {
   margin-top: 16px; }
 
 .individual-subjects {
-  margin: 8px 0; }
+  margin: 12px 0; }
   .individual-subjects li {
     display: inline-block;
     margin-bottom: 5px; }
@@ -429,8 +429,29 @@ a, .button {
   cursor: default; }
 
 .dpla-search {
-  font-family: 'FontAwesome';
-  font-size: 11px; }
+  font-family: serif;
+  font-size: 8px;
+  font-weight: bold; }
+  .single-subject .dpla-search {
+    padding: 2px 3px; }
+  .dpla-search span {
+    background: rgba(255, 255, 255, 0.7);
+    color: #007acc;
+    float: left;
+    height: 8px;
+    width: 8px;
+    line-height: 9px;
+    padding: 1px;
+    text-align: center; }
+    .dpla-search span.l {
+      clear: left;
+      margin-right: 1px; }
+    .dpla-search span.d {
+      margin: 0 1px 1px 0; }
+    .dpla-search span.p {
+      margin-bottom: 1px; }
+  .dpla-search:hover span {
+    background: white; }
 
 .neighbors.disabled {
   pointer-events: none;
