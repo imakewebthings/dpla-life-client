@@ -25,7 +25,7 @@ define(['underscore'], function(_) {
   // Environment agnostic settings
   var settings = {
     indexSearchTerm: 'Cooking, American',
-    indexStackRibbon: 'Cooking, American',
+    indexStackRibbon: 'Recently Most Read',
 
     bookURL: function() {
       return settings.apiRoot + '/books';
@@ -43,7 +43,7 @@ define(['underscore'], function(_) {
       return settings.apiRoot + '/dpla-items?' + $.param(params);
     },
     indexStackURL: function() {
-      return settings.apiRoot + '/search';
+      return settings.apiRoot + '/books/recent-most-read';
     },
     neighborsURL: function(bookID) {
       return [settings.bookURL(), bookID, 'neighbors'].join('/');

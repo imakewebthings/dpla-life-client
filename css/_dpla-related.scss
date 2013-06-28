@@ -2,6 +2,10 @@
   &:before {
     content: 'Loading…'
   }
+
+  > p {
+    display:none;
+  }
 }
 
 .dpla-related {
@@ -11,6 +15,11 @@
   .dpla-loading & {
     visibility:hidden;
   }
+}
+
+.dpla-related-description {
+  line-height:1.2;
+  margin-bottom:16px;
 }
 
 .dpla-related-item {

@@ -464,12 +464,18 @@ a, .button {
 
 .dpla-loading:before {
   content: "Loading…"; }
+.dpla-loading > p {
+  display: none; }
 
 .dpla-related {
   width: 360px;
   margin-left: -5px; }
   .dpla-loading .dpla-related {
     visibility: hidden; }
+
+.dpla-related-description {
+  line-height: 1.2;
+  margin-bottom: 16px; }
 
 .dpla-related-item {
   float: left;

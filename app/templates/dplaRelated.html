@@ -1,7 +1,8 @@
 <% var items = model.get('docs') %>
 
-<div class="dpla-related">
-  <% if (items && items.length) { %>
+<% if (items && items.length) { %>
+  <p class="dpla-related-description">Images, videos, and sounds from the DPLA on subjects related to this book.</p>
+  <div class="dpla-related">
     <% _.each(items, function(item) { %>
       <div class="dpla-related-item">
         <a href="http://dp.la/item/<%= item.id %>" target="_blank" class="qtip-me view-dpla-item" title='View "<%= item.sourceResource.title %>" on dp.la'>
@@ -10,7 +11,9 @@
         <a href="<%= item.isShownAt %>" class="qtip-me view-source-item" title='View "<%= item.sourceResource.title %>" at <%= item.provider.name %>' target="_blank">&#xf08e;</a>
       </div>
     <% }); %>
-  <% } else { %>
+  </div>
+<% } else { %>
+  <div class="dpla-related">
     <p>No related DPLA items.</p>
-  <% } %>
-</div>
+  </div>
+<% } %>
