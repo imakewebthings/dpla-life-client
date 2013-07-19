@@ -9,6 +9,7 @@ define([
   'views/appNotify',
   'text!templates/stackview.html',
   'text!templates/stackview-book.html',
+  'text!templates/stackview-dpla.html',
   'stackview',
   'jquery-ui'
 ], function(
@@ -21,10 +22,33 @@ define([
   appConfirm,
   appNotify,
   StackTemplate,
-  StackViewBookTemplate
+  StackViewBookTemplate,
+  StackViewDplaTemplate
 ) {
   
   window.StackView.defaults.book.min_height_percentage = 66;
+  $.extend(true, window.StackView.defaults, {
+    selectors: {
+      image: '.stack-image'
+    }
+  });
+
+  window.StackView.register_type({
+    name: 'dpla',
+    match: function(item) {
+      return item.format;
+    },
+    adapter: function(item, options) {
+      return {
+        heat: window.StackView.utils.get_heat(item.shelfrank),
+        height: '85%',
+        title: item.title,
+        link: '#',
+        format: item.format
+      };
+    },
+    template: StackViewDplaTemplate
+  });
 
   var currentStack, pivotID;
 
@@ -52,6 +76,7 @@ define([
         .on('stackview.pageload', _.bind(this._qtipify, this));
       if (options.sortable) {
         this._makeShelfSortable();
+        this._makeRemovable();
       }
     },
 
@@ -91,15 +116,15 @@ define([
           error: function() {
             appNotify.notify({
               type: 'error',
-              message: 'Something went wrong trying to remove that book from this shelf.'
+              message: 'Something went wrong trying to remove that item from this shelf.'
             });
           }
         });
       };
 
       appConfirm({
-        message: 'Are you sure you want to take that book off the shelf?',
-        confirmText: 'Yes, Remove Book',
+        message: 'Are you sure you want to take that item off the shelf?',
+        confirmText: 'Yes, Remove Item',
         onConfirm: onConfirm
       });
 
@@ -184,6 +209,10 @@ define([
           $stackview.stackView('zIndex');
         }
       });
+    },
+
+    _makeRemovable: function() {
+      this.$('.stack-item').append('<span class="stack-item-delete" title="Delete">&#xf056;</span>')
     }
   });
 

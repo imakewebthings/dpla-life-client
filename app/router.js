@@ -14,8 +14,7 @@ define([
   'views/appNotify',
   'text!templates/faq.html',
   'text!templates/privacy.html',
-  'text!templates/stackview-book.html',
-  'text!templates/stackview-shelf-book.html'
+  'text!templates/stackview-book.html'
 ], function(
   _,
   Backbone,
@@ -32,8 +31,7 @@ define([
   appNotify,
   FaqTemplate,
   PrivacyTemplate,
-  SVBookTemplate,
-  SVOwnedTemplate
+  SVBookTemplate
 ) {
   var mainView;
   var inStackedMode = false;
@@ -96,18 +94,17 @@ define([
           var currentUser = UserModel.currentUser();
           var shelfOwned = currentUser && 
                            currentUser.get('id') === model.get('user_id');
-          var shelfTemplate = shelfOwned ? SVOwnedTemplate : SVBookTemplate;
 
           setMain(StackedMainView);
           mediator.trigger('stack:load', {
-            url: settings.get('searchURL'),
-            query: model.get('book_ids').join(','),
+            data: {
+              docs: model.get('items'),
+              num_found: model.get('items').length
+            },
             ribbon: model.get('name'),
-            jsonp: true,
-            search_type: 'ids',
             fullHeight: true,
             selectFirstBook: fresh,
-            bookTemplate: shelfTemplate,
+            bookTemplate: SVBookTemplate,
             sortable: shelfOwned,
             model: model
           });

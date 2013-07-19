@@ -63,7 +63,13 @@ define([
       $.ajax({
         type: 'post',
         url: settings.get('shelfPushURL', shelfID),
-        data: { id: bookID },
+        data: { 
+          item: {
+            item_id: bookID,
+            item_type: 'book',
+            source: 'book_source'
+          }
+        },
         headers: {
           'Authorization': 'Token token=' + userToken
         },

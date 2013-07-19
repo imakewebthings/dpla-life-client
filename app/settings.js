@@ -55,10 +55,10 @@ define(['underscore'], function(_) {
       return settings.apiRoot + '/shelves'
     },
     shelfPushURL: function(shelfID) {
-      return [settings.shelfURL(), shelfID, 'books'].join('/');
+      return [settings.shelfURL(), shelfID, 'items'].join('/');
     },
     shelfRemoveURL: function(shelfID, bookID) {
-      return [settings.shelfURL(), shelfID, 'books', bookID].join('/');
+      return [settings.shelfURL(), shelfID, 'items', bookID].join('/');
     },
     searchURL: function() {
       return settings.apiRoot + '/search';

@@ -1,0 +1,36 @@
+<div class="book-preview">
+  <% if (model.get('cover_small')) { %>
+    <img src="<%= model.get('cover_small') %>" class="cover_small" alt="">
+  <% } %>
+  <h2><%= model.get('title') %></h2>
+  <% if (model.get('creator')) { %>
+    <h3><%= model.get('creator') %></h3>
+  <% } %>
+
+  <% if (model.get('description')) { %>
+    <%
+      var desc = model.get('description');
+      desc = _.isArray(desc) ? desc.join('; ') : desc;
+    %>
+    <p><%= desc %></p>
+  <% } %>
+
+  <div class="book-meta">
+    <% if (model.get('publisher')) { %>
+      <p class="book-published">
+        <strong>Published by:</strong>
+        <%= model.get('publisher') %>
+      </p>
+    <% } %>
+    
+    <% if (model.get('source_url')) { %>
+      <p class="book-source">
+        <strong>Source:</strong>
+        <% if (model.get('source_library')) { %>
+          <span><%= model.get('source_library') %></span>
+        <% } %>
+        <a href="<%= model.get('source_url') %>" target="_blank"><%= model.get('source_url') %></a>
+      </p>
+    <% } %>
+  </div>
+</div>
