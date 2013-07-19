@@ -4,4 +4,13 @@
     <li><a href="#shelves/<%= shelf.get('id') %>"><%= shelf.get('name') %></a></li>
   <% }); %>
   <li class="new-shelf"><a href="#"><span>+</span> New Shelf</a></li>
+  <li class="dpla-bookmarklet"><a href="javascript:(function() {
+    var onDpla = window.location.hostname.indexOf('dp.la') > -1;
+    var onItem = window.location.pathname.indexOf('item') > -1;
+    if (!onDpla || !onItem) {
+      return alert('This bookmarklet only works on dp.la item pages.');
+    }
+    var parts = window.location.pathname.split('/');
+    window.location = '<%= helpers.bookmarkletURL() %>' + parts[parts.length - 1];
+  })();" title="Drag this link to your bookmarks. When browsing dp.la, click on the bookmark to add that item to one of your StackLife shelves.">+ StackLife</a></li>
 </ul>

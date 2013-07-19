@@ -1,0 +1,37 @@
+.add-from-dpla-form {
+  width:340px;
+  margin:0 auto;
+  padding:0 20px;
+
+  img, .img-standin {
+    float:right;
+    max-width:160px;
+  }
+
+  select {
+    display:block;
+    margin:12px 0;
+  }
+
+  input {
+    display:block;
+  }
+
+  .img-standin {
+    background:#ccc;
+    width:100px;
+    padding:10px;
+    min-height:80px;
+    font-size:14px;
+    text-align:center;
+  }
+}
+
+.add-from-dpla-login {
+  text-align:center;
+}
+
+.dpla-bookmarklet > a {
+  border-radius:20px;
+  background: $thinWhite;
+}

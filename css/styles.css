@@ -235,6 +235,33 @@ a, .button {
   padding: 0 10px;
   min-height: 1px; }
 
+.add-from-dpla-form {
+  width: 340px;
+  margin: 0 auto;
+  padding: 0 20px; }
+  .add-from-dpla-form img, .add-from-dpla-form .img-standin {
+    float: right;
+    max-width: 160px; }
+  .add-from-dpla-form select {
+    display: block;
+    margin: 12px 0; }
+  .add-from-dpla-form input {
+    display: block; }
+  .add-from-dpla-form .img-standin {
+    background: #ccc;
+    width: 100px;
+    padding: 10px;
+    min-height: 80px;
+    font-size: 14px;
+    text-align: center; }
+
+.add-from-dpla-login {
+  text-align: center; }
+
+.dpla-bookmarklet > a {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.3); }
+
 .app-confirm {
   width: 220px;
   margin-top: -24px; }
@@ -654,7 +681,8 @@ a, .button {
   background: rgba(0, 122, 204, 0.3);
   border-radius: 3px;
   margin-top: 16px;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  clear: both; }
   .book-meta .book-published, .book-meta .book-source, .book-meta .book-pub-date, .book-meta .book-page-count {
     font-size: 12px;
     margin-bottom: 2px; }
@@ -846,6 +874,25 @@ a, .button {
   .stack-dpla .spine-title {
     height: 28px;
     line-height: 28px; }
+  .stack-dpla .stack-cover {
+    position: absolute;
+    top: -4px;
+    height: 2px;
+    left: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px 4px 0 0;
+    -o-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    -moz-transform-origin: 0 100%;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: skew(-70deg, 0deg);
+    -moz-transform: skew(-70deg, 0deg);
+    -o-transform: skew(-70deg, 0deg);
+    -ms-transform: skew(-70deg, 0deg);
+    transform: skew(-70deg, 0deg); }
 
 .dpla-edge {
   position: absolute;
@@ -867,26 +914,6 @@ a, .button {
   -ms-transform: skew(0deg, -20deg);
   transform: skew(0deg, -20deg); }
 
-.dpla-cover {
-  position: absolute;
-  top: -4px;
-  height: 2px;
-  left: 0;
-  right: 0;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 4px 4px 0 0;
-  -o-transform-origin: 0 100%;
-  -ms-transform-origin: 0 100%;
-  -moz-transform-origin: 0 100%;
-  -webkit-transform-origin: 0 100%;
-  transform-origin: 0 100%;
-  -webkit-transform: skew(-70deg, 0deg);
-  -moz-transform: skew(-70deg, 0deg);
-  -o-transform: skew(-70deg, 0deg);
-  -ms-transform: skew(-70deg, 0deg);
-  transform: skew(-70deg, 0deg); }
-
 .stack-dpla .spine-title:before {
   font-family: 'FontAwesome';
   padding-right: 5px; }
@@ -899,6 +926,12 @@ a, .button {
 
 .stack-movingimage .spine-title:before {
   content: '\f03d'; }
+
+.stack-text .spine-title:before {
+  content: '\f0f6'; }
+
+.stack-physicalobject .spine-title:before {
+  content: '\f0f7'; }
 
 .user-settings {
   width: 200px; }

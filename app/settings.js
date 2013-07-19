@@ -27,6 +27,10 @@ define(['underscore'], function(_) {
     indexSearchTerm: 'Cooking, American',
     indexStackRibbon: 'Recently Most Read',
 
+    bookmarkletURL: function() {
+      return settings.webRoot + '/#shelves/dpla-add/'
+    },
+
     bookURL: function() {
       return settings.apiRoot + '/books';
     },
@@ -36,8 +40,8 @@ define(['underscore'], function(_) {
     bookReviewsURL: function(bookID) {
       return [settings.bookURL(), bookID, 'reviews'].join('/');
     },
-    dplaItemURL: function(itemID) {
-      return [settings.apiRoot, 'dpla-items', itemID].join('/');
+    dplaItemURL: function() {
+      return settings.apiRoot + '/dpla-items';
     },
     dplaSearchURL: function(params) {
       return settings.apiRoot + '/dpla-items?' + $.param(params);
@@ -78,6 +82,7 @@ define(['underscore'], function(_) {
   if (window.location.host.indexOf('localhost') !== -1) {
     _.extend(settings, {
       apiRoot: 'http://localhost:3000',
+      webRoot: 'http://localhost:8000',
       secure: false
     });
   }
@@ -85,12 +90,14 @@ define(['underscore'], function(_) {
   else if (window.location.host.indexOf('imakewebthings.com') !== -1) {
     _.extend(settings, {
       apiRoot: 'http://dpla-life-service-dev.herokuapp.com',
+      webRoot: 'http://imakewebthings.com/dpla-life-client',
       secure: false
     });
   }
   else if (window.location.host.indexOf('law.harvard.edu')) {
     _.extend(settings, {
       apiRoot: '',
+      webRoot: 'https://stacklife-dpla.law.hardard.edu',
       secure: true
     });
   }

@@ -6,11 +6,13 @@ define([
   'models/book',
   'models/user',
   'models/shelf',
+  'models/dplaItem',
   'collections/shelves',
   'views/base',
   'views/index',
   'views/shelf',
   'views/stackedMain',
+  'views/addFromDpla',
   'views/appNotify',
   'text!templates/faq.html',
   'text!templates/privacy.html',
@@ -23,11 +25,13 @@ define([
   BookModel,
   UserModel,
   ShelfModel,
+  DplaItemModel,
   ShelfCollection,
   BaseView,
   IndexView,
   ShelfView,
   StackedMainView,
+  AddFromDplaView,
   appNotify,
   FaqTemplate,
   PrivacyTemplate,
@@ -47,6 +51,7 @@ define([
     inStackedMode = MainClass === StackedMainView;
     if (!inStackedMode) {
       mediator.trigger('preview:unload');
+      mediator.trigger('dpla:unload');
     }
   };
 
@@ -55,6 +60,7 @@ define([
       '': 'index',
       'search/:type/:term': 'search',
       'books/:id': 'showBook',
+      'shelves/dpla-add/:id': 'addFromDpla',
       'shelves/:id': 'showShelf',
       'faq/': 'showFaq',
       'privacy/': 'showPrivacy'
@@ -117,6 +123,23 @@ define([
             type: 'error',
             message: 'Something went wrong trying to load that shelf.'
           });
+        }
+      });
+    },
+
+    addFromDpla: function(id) {
+      var model = new DplaItemModel({ id: id });
+
+      model.fetch({
+        success: function(model, response, options) {
+          setMain(AddFromDplaView, { model: model });
+        },
+
+        error: function(model, xhr, options) {
+          appNotify.notify({
+            type: 'error',
+            message: 'Something went wrong trying to load this item from the DPLA.'
+          })
         }
       });
     },

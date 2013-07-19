@@ -1,0 +1,22 @@
+<% var user = helpers.currentUser() %>
+
+<div class="layout-full-width">
+  <% if (user) { %>
+    <form action="#" method="post" class="add-from-dpla-form">
+      <% if (model.get('object')) { %>
+        <img src="<%= model.get('object') %>" alt="<%= model.get('sourceResource').title %>">
+      <% } else { %>
+        <div class="img-standin"><%= model.get('sourceResource').title %></div>
+      <% } %>
+      <label for="shelf_select">Add DPLA Item to Shelf</label>
+      <select name="shelf_id" id="shelf_select">
+        <% _.each(user.get('shelves'), function(shelf) { %>
+          <option value="<%= shelf.id %>"><%= shelf.name %></option>
+        <% }); %>
+      </select>
+      <input type="submit" value="Add" class="button">
+    </form>
+  <% } else { %>
+    <p class="add-from-dpla-login">You must be logged in to add DPLA items with the bookmarklet.</p>
+  <% } %>
+</div>
