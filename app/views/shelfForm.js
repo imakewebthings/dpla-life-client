@@ -49,12 +49,10 @@ define([
 
     success: function(model, response, options) {
       mediator.trigger('modal:hide');
-      $('.ribbon').text(model.get('name'));
       mediator.trigger('user:sync');
     },
 
     error: function(model, xhr, options) {
-      console.log(arguments)
       var errors = JSON.parse(xhr.responseText).errors;
       var $formErrors = this.$('.form-errors');
       
