@@ -25,10 +25,6 @@ define([
     className: 'dpla-loading',
     template: _.template(DplaRelatedTemplate),
 
-    events: {
-      'click .view-dpla-item': 'showDplaDetail'
-    },
-
     initialize: function(options) {
       Backbone.View.prototype.initialize.call(this, options);
       this.subviews = [];
@@ -36,9 +32,8 @@ define([
         this.template = options.template;
       }
       this.model = new Backbone.Model();
-      this.model.url = settings.get('dplaSearchURL', this.params());
       this.model.on('change', _.bind(this.redraw, this));
-      this.model.fetch();
+      this.loadModel();
     },
 
     render: function() {
@@ -52,9 +47,16 @@ define([
       }, this));
     },
 
-    showDplaDetail: function(event) {
-      // mediator.trigger('modal:show', DplaDetailView);
-      // event.preventDefault();
+    loadModel: function() {
+      var params = this.params();
+
+      if (params) {
+        this.model.url = settings.get('dplaSearchURL', this.params());
+        this.model.fetch();
+      }
+      else {
+        this.model.set('docs', []);
+      }
     },
 
     params: function() {
